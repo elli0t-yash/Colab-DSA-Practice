@@ -18,7 +18,7 @@ void leftRotate(int arr[], int d, int n) {
         while (1) {
             int k = j + d;
             if(k >= n) {
-                k = k -n;
+                k = k - n;
             }
             if(k == i){
                 break;
