@@ -34,6 +34,23 @@ void insertionSort(int arr[], int n) {
     
 }
 
+// Selection sort
+void selectionSort(int arr[], int n) {
+    int min_index;
+    for (int i = 0; i < n-1; i++) {
+        min_index = i;
+        for (int j = i + 1; i < n; i++) {
+            if(arr[j] < arr[min_index])
+                min_index = j;
+        }
+
+        if(min_index != i)
+            swap(arr[min_index],arr[i]);
+        
+    }
+    
+}
+
 int main(){
     int n;
     cin>>n;
