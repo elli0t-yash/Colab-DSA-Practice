@@ -142,7 +142,7 @@ void heapSort(vector<int>& arr, int n) {
     }
 }
 
-// Comb Sort(better version of bubble sort[in bubble sort we compare adjacent elements] but in comb sort we make use of dynamic gap and compare elements within the gap and swap)
+// Comb Sort (better version of bubble sort[in bubble sort we compare adjacent elements] but in comb sort we make use of dynamic gap and compare elements within the gap and swap)
 int getGap(int gap) {
     gap = (gap*10)/13;
     if(gap < 1)
@@ -165,6 +165,37 @@ void combSort(vector<int>& arr, int n) {
     }
 }
 
+// Radix Sort (Unit based sorting algo)
+int getMax(vector<int> arr, int n) {
+    int mx = arr[0];
+    for (int i = 0; i < n; i++) {
+        if(arr[i] > mx)
+            mx = arr[i];
+    }
+    return mx;
+}
+
+void countSort(vector<int> arr, int n, int exp) {
+    vector<int> result;
+    int i, count[10] = { 0 };
+    for(i = 0; i< n; i++)
+        count[(arr[i]/exp)%10]++;
+    for(i = 1; i<10;i++)
+        count[i] += count[i-1];
+    for(i = n- 1; i>=0; i--) {
+        result[count[(arr[i]/exp)%10]-1] = arr[i];
+        count[(arr[i]/exp)%10]--;
+    }
+    for(i=0;i<n;i++)
+        arr[i] = result[i];
+}
+
+void radixSort(vector<int> arr, int n) {
+    int m = getMax(arr, n);
+    for(int exp = 1; m / exp > 0; exp *= 10)
+        countSort(arr, n ,exp);
+}
+
 int main(){
     int n;
     cin>>n;
@@ -180,7 +211,8 @@ int main(){
     // insertionSort(arr,n);
     // quickSort(arr,0,n-1);
     // heapSort(arr1, n);
-    combSort(arr1, n);
+    // combSort(arr1, n);
+    radixSort(arr1, n);
     for (int i = 0; i < n; i++) {
         cout<<arr[i];
     }
