@@ -142,6 +142,29 @@ void heapSort(vector<int>& arr, int n) {
     }
 }
 
+// Comb Sort(better version of bubble sort[in bubble sort we compare adjacent elements] but in comb sort we make use of dynamic gap and compare elements within the gap and swap)
+int getGap(int gap) {
+    gap = (gap*10)/13;
+    if(gap < 1)
+        return 1;
+    return gap;
+}
+
+void combSort(vector<int>& arr, int n) {
+    int gap = n;
+    bool swapped = true;
+    while(gap != 1 || swapped == true) {
+        gap = getGap(gap);
+        swapped = false;
+        for(int i = 0; i < n-gap; i++) {
+            if(arr[i] > arr[i + gap]) {
+                swap(arr[i], arr[i+gap]);
+                swapped = true;
+            }
+        }
+    }
+}
+
 int main(){
     int n;
     cin>>n;
@@ -156,7 +179,8 @@ int main(){
     // bubbleSort(arr,n);
     // insertionSort(arr,n);
     // quickSort(arr,0,n-1);
-    heapSort(arr1, n);
+    // heapSort(arr1, n);
+    combSort(arr1, n);
     for (int i = 0; i < n; i++) {
         cout<<arr[i];
     }
