@@ -104,7 +104,34 @@ int getMax(vector<int>& block, int n) {
     return rainwater;
 }
 
+// Count ways reach nth stair
+int fib(int n, int dp[]) {
+    if(n <= 1)
+        return dp[n] = 1;
+    if(dp[n] != -1)
+        return dp[n];
+    dp[n] = fib(n - 1, dp) + fib(n - 2, dp);
+    return dp[n];
+}
 
+int countWays(int n){
+    int dp[n + 1];
+    memset(dp, -1, sizeof dp);
+    fib(n, dp); 
+    return dp[n];
+}
+
+// Count ways reach nth stair using less space
+int countWaysLessSpace(int n) {
+    int prev = 1;
+    int prev2 = 1;
+    for(int i = 2; i <= n; i++) {
+        int curr = prev + prev2;
+        prev2 = prev;
+        prev = curr;
+    }
+    return prev;
+}
 
 
 int main() {
@@ -114,7 +141,10 @@ int main() {
     // int re = getMax(block, block.size());
     // cout<<re;
     vector<vector<int>> height = {{1, 4, 3, 1, 3, 2}, {3, 2, 1, 3, 2, 4}, {2, 3, 3, 2, 3, 1}};
-    cout<<getMax2D(height);
+    cout<<getMax2D(height)<<" ";
+    int n = 4;
+    cout<<countWays(n)<<" ";
+    cout<<countWaysLessSpace(n);
     // for (int i = 0; i < n; i++) {
     //     cin>>block[i];
     // }
