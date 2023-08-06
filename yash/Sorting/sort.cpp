@@ -205,6 +205,36 @@ void sleepSort(vector<int>& arr, int n) {
     
 }
 
+// Binary Insertion sort - Binary Search + Insertion Sort
+int binarySearch(vector<int>& arr, int item, int low, int high) {
+    if(high <= low)
+        return (item > arr[low]) ? (low + 1) : low;
+    int mid = (low + high) / 2;
+    if(item == arr[mid])
+        return mid + 1;
+    if(item > arr[mid])
+        return binarySearch(arr, item, mid + 1, high);
+    return binarySearch(arr, item, low, mid - 1);
+}
+
+void insertionSortBS(vector<int>& arr, int n) {
+    int loc, selected;
+    int j, k;
+    for(int i = 1; i < n; i++) {
+        j = i - 1;
+        selected = arr[i];
+        loc = binarySearch(arr, selected, 0, j);
+        while(j >= loc) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j+1] = selected;
+    }
+}
+
+// Tim Sort - the default sorting technique of python (uses Binary Insertion Sort + Merge Sort)
+
+
 int main(){
     int n;
     cin>>n;
