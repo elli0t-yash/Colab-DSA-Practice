@@ -190,10 +190,19 @@ void countSort(vector<int> arr, int n, int exp) {
         arr[i] = result[i];
 }
 
-void radixSort(vector<int> arr, int n) {
+void radixSort(vector<int>& arr, int n) {
     int m = getMax(arr, n);
     for(int exp = 1; m / exp > 0; exp *= 10)
         countSort(arr, n ,exp);
+}
+
+// Sleep Sort - OS use this sort for multithreading 
+void sleepSort(vector<int>& arr, int n) {
+    for (int i = 0; i < n   ; i++) {
+        this_thread::sleep_for(chrono::milliseconds(arr[i]));
+        cout<<arr[i]<<" ";
+    }
+    
 }
 
 int main(){
@@ -212,9 +221,10 @@ int main(){
     // quickSort(arr,0,n-1);
     // heapSort(arr1, n);
     // combSort(arr1, n);
-    radixSort(arr1, n);
-    for (int i = 0; i < n; i++) {
-        cout<<arr[i];
-    }
+    // radixSort(arr1, n);
+    // for (int i = 0; i < n; i++) {
+    //     cout<<arr[i];
+    // }
+    sleepSort(arr1, n);
     return 0;
 }
