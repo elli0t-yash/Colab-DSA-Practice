@@ -24,13 +24,21 @@ vector<int> sieveAlgo(int N) {
 }
 
 int main() {
-    int n;
-    cin>>n;
+    int n, k;
+    cin>>n>>k;
     vector<int> result;
+    vector<int> prime;
 
     result = sieveAlgo(n);
-    for (int i = 0; i < result.size(); i++) {
-        cout<<result[i]<<" ";
+    for(int num : result) {
+        if(num % 10 == k) {
+            prime.push_back(num);
+        }
     }
+
+    for(int i : prime) {
+        cout<<i<<" ";
+    }
+
     
 }
