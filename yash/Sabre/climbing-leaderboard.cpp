@@ -4,7 +4,7 @@ using namespace std;
 string ltrim(const string &);
 string rtrim(const string &);
 vector<string> split(const string &);
-
+        
 // Normal Approach
 vector<int> climbingLeaderboard(vector<int> ranked, vector<int> player) {
     vector<int> player_rank;
