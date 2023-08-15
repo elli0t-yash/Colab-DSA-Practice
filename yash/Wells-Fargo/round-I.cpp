@@ -79,6 +79,22 @@ int countWaysLessSpace(int n) {
     return prev;
 }
 
+// Delete Middle Element from the stack
+void deleteMiddle_util(stack<int>&inputStack, int N, int current) {
+   if(current == N/2) {
+      inputStack.pop();
+      return;
+   }
+   int x = inputStack.top();
+   inputStack.pop();
+   current += 1;
+   deleteMiddle_util(inputStack, N, current);
+   inputStack.push(x);
+}
+void deleteMiddle(stack<int>&inputStack, int N){
+	deleteMiddle_util(inputStack, N, 0);
+}
+
 int main() {
     int n,s;
     cin>>n>>s;
