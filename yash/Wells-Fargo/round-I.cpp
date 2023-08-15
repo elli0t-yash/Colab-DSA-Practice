@@ -95,6 +95,23 @@ void deleteMiddle(stack<int>&inputStack, int N){
 	deleteMiddle_util(inputStack, N, 0);
 }
 
+void bubbleSort(vector<int>& arr, int n)
+{   
+    bool swapbubble;
+    for(int i = 0; i < n - 1; i++) {
+        swapbubble = false;
+        for(int j = 0; j < n - i - 1; j++) {
+          if (arr[j] > arr[j + 1]) {
+            swap(arr[j], arr[j + 1]);
+            swapbubble = true;
+          }
+        }
+
+        if(swapbubble == false)
+            break;
+    }
+}
+
 int main() {
     int n,s;
     cin>>n>>s;
