@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+const int MOD = 1e9 + 7;
+
 // vector<vector<int>> pairSum(vector<int> &arr, int s){
 //     vector<vector<int>> answer;
 //     unordered_map<int, int> pair_map;
@@ -63,6 +65,18 @@ vector<int> nextPermutation(vector<int> &permutation, int n) {
     }
     reverse(permutation.begin() + index + 1, permutation.end());
     return permutation;
+}
+
+// Count ways reach nth stair using less space
+int countWaysLessSpace(int n) {
+    int prev = 1;
+    int prev2 = 1;
+    for(int i = 2; i <= n; i++) {
+        int curr = (prev + prev2) % MOD;
+        prev2 = prev;
+        prev = curr;
+    }
+    return prev;
 }
 
 int main() {
