@@ -219,7 +219,6 @@ vector<vector<int>> getTreeTraversal(TreeNode *root){
 }
 
 
-
 int main() {
     int n,s;
     cin>>n>>s;
