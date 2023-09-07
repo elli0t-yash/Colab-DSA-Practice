@@ -40,7 +40,6 @@ int processQueries(vector<deliveryPartner>& deliveryPartners, int maxDistance, i
     }
 }
 
-
 //LRU-Cache (deque-hashmap)
     class LRUCache {
     public:
@@ -161,10 +160,6 @@ public:
         mp[key] = head->next;
     }
 };
-
-
-
-
 
 int main() {
     int no_of_delivery_partners, maxDistance, bonus;
